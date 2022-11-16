@@ -1,12 +1,15 @@
 #include "GameEngine.h"
 
+#define WINDOW_WIDTH 859
+#define WINDOW_HEIGHT 524
+
 GameEngine::GameEngine() : m_isRunning(true)
 {
-	m_currentScene = new MainMenu();
+	m_currentScene = new GameScene();
 	m_window = SDL_CreateWindow(
 		"Pong", 
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 
-		859, 525,
+		WINDOW_WIDTH, WINDOW_HEIGHT,
 		SDL_WINDOW_RESIZABLE);
 
 	m_renderer = SDL_CreateRenderer(m_window, -1, 0);

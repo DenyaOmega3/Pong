@@ -1,6 +1,7 @@
 #include "SDL.h"
 #undef main
 #include <iostream>
+#include <cassert>
 #include "GameEngine.h"
 
 /*
@@ -30,17 +31,16 @@ Menu creation
 abstract Menu: clickable buttons, 
 */
 
-//don't do this, this is just an example
 
-
-//please don't put all your code in main like I did.
+/*
+* Two problems to solve:
+1. ResourceManager in order not to load constantly the same arial
+2. SDL_CreateTextureFromSurface do once (check)
+*/
 int main() {
-	if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
-		return 1;
-	}
-	if (TTF_Init() != 0) {
-		return 2;
-	}
+	assert(!SDL_Init(SDL_INIT_EVERYTHING),"SDL hasn't initialized");
+	assert(!TTF_Init(), "TTF hasn't initialized");
+
 	GameEngine engine;
 
 	while (engine.isGameRunning()) {
@@ -50,6 +50,8 @@ int main() {
 	}
 
 	SDL_Quit();
+	TTF_Quit();
+
 	/*
 	fullscreen = false;
 	int flags = 0;

@@ -8,6 +8,8 @@ class GameScene : public Scene
 
 	SDL_Rect m_ball;
 
+	bool initialized;
+
 	//SDL_Rect m_scoreOne;
 	//SDL_Rect m_scoreTwo;
 
@@ -15,6 +17,7 @@ public:
 	GameScene();
 	~GameScene();
 
-	void playScene(SDL_Renderer* render, SDL_Window* window) override;
+	void setPlatforms(SDL_Window* window);
+	void playScene(SDL_Renderer* renderer, SDL_Window* window) override;
 };
 

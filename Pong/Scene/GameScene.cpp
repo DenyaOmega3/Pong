@@ -1,33 +1,47 @@
 #include "GameScene.h"
 
-GameScene::GameScene()
+GameScene::GameScene() : initialized(false)
 {
-	m_platformOne.x = 20;
-	m_platformOne.y = 20;
-	m_platformOne.w = 40;
-	m_platformOne.h = 40;
-
-	m_platformTwo.x = 520;
-	m_platformTwo.y = 20;
-	m_platformTwo.w = 40;
-	m_platformTwo.h = 40;
 }
 
 GameScene::~GameScene()
 {
 }
 
-void GameScene::playScene(SDL_Renderer* render, SDL_Window* window)
+void GameScene::setPlatforms(SDL_Window* window)
 {
+	int windowWidth, windowHeight;
+	SDL_GetWindowSize(window, &windowWidth, &windowHeight);
+
+	int marginX = 60;
+	int rectWidth = 10, rectHeight = 40;
+
+	m_platformOne.x = marginX;
+	m_platformOne.y = windowHeight / 2 - rectHeight / 2;
+	m_platformOne.w = rectWidth;
+	m_platformOne.h = rectHeight;
+
+	m_platformTwo.x = windowWidth - marginX;
+	m_platformTwo.y = windowHeight / 2 - rectHeight / 2;
+	m_platformTwo.w = rectWidth;
+	m_platformTwo.h = rectHeight;
+}
+
+void GameScene::playScene(SDL_Renderer* renderer, SDL_Window* window)
+{
+	if (!initialized) {
+		setPlatforms(window);
+	}
+
 	int width, height;
 	SDL_GetWindowSize(window, &width, &height);
 
-	SDL_SetRenderDrawColor(render, 121, 121, 121, 255);
-	SDL_RenderFillRect(render, &m_platformOne);
-	SDL_RenderFillRect(render, &m_platformTwo);
+	SDL_SetRenderDrawColor(renderer, 121, 121, 121, 255);
+	SDL_RenderFillRect(renderer, &m_platformOne);
+	SDL_RenderFillRect(renderer, &m_platformTwo);
 
 
-	SDL_RenderDrawLine(render, (width - 1) / 2, 0, (width - 1) / 2, height);
+	SDL_RenderDrawLine(renderer, (width - 1) / 2, 0, (width - 1) / 2, height);
 
-	SDL_RenderPresent(render);
+	SDL_RenderPresent(renderer);
 }
