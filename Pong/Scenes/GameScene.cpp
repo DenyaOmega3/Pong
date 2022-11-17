@@ -1,7 +1,9 @@
 #include "GameScene.h"
 
-GameScene::GameScene() : initialized(false), m_platformOneSpeed(5)
+GameScene::GameScene() : m_playerPlatform(), initialized(false),
+m_botPlatform(m_playerPlatform), m_ball()
 {
+	m_botPlatform.getRectangle().x = 859 - m_botPlatform.getRectangle().x;
 }
 
 GameScene::~GameScene()
@@ -10,53 +12,35 @@ GameScene::~GameScene()
 
 void GameScene::setPlatforms(SDL_Window* window)
 {
-	int windowWidth, windowHeight;
-	SDL_GetWindowSize(window, &windowWidth, &windowHeight);
-
-	int marginX = 60;
-	int rectWidth = 10, rectHeight = 40;
-
-	m_platformOne = SDL_Rect{ marginX, windowHeight / 2 - rectHeight / 2, rectWidth, rectHeight };
-	m_platformTwo = SDL_Rect{ windowWidth - marginX, windowHeight / 2 - rectHeight / 2, rectWidth, rectHeight };
-
-	int halfSize = 4;
-	m_ball = SDL_Rect{ windowWidth / 2 - halfSize, windowHeight / 2 - halfSize, 2* halfSize,2* halfSize };
 }
 
 void GameScene::playScene(SDL_Renderer* renderer, SDL_Window* window)
 {
-	if (!initialized) {
-		setPlatforms(window);
-		initialized = true;
-	}
-
 	int width, height;
 	SDL_GetWindowSize(window, &width, &height);
 
 	SDL_SetRenderDrawColor(renderer, 121, 121, 121, 255);
-	SDL_RenderFillRect(renderer, &m_platformOne);
-	SDL_RenderFillRect(renderer, &m_platformTwo);
-	SDL_RenderFillRect(renderer, &m_ball);
-
+	SDL_RenderFillRect(renderer, &m_playerPlatform.getRectangle());
+	SDL_RenderFillRect(renderer, &m_botPlatform.getRectangle());
+	SDL_RenderFillRect(renderer, &m_ball.getRectangle());
 
 	SDL_RenderDrawLine(renderer, (width - 1) / 2, 0, (width - 1) / 2, height);
 
 	SDL_RenderPresent(renderer);
 }
 
-SDL_Rect GameScene::getPlatformOne() const
+Platform& GameScene::getPlayerPlatform()
 {
-	return m_platformOne;
+	return m_playerPlatform;
 }
 
-void GameScene::setPlatformOne(const SDL_Rect& platform)
+Platform& GameScene::getBotPlatform()
 {
-	m_platformOne = platform;
+	return m_botPlatform;
 }
 
-SDL_Rect& GameScene::getBall()
+Ball& GameScene::getBall()
 {
-	std::cout << m_ball.x << std::endl;
 	return m_ball;
 }
 

@@ -1,6 +1,5 @@
 #pragma once
-#include "Scenes/GameScene.h"
-#include "Scenes/MainMenu.h"
+#include "SDL_ttf.h"
 #include "Events/GameSceneEvent.h"
 
 class GameEngine
@@ -11,14 +10,22 @@ class GameEngine
 	bool m_isRunning;
 	EventHandler* m_eventHandler;
 
-public:
+	static GameEngine* m_uniqueEngine;
+
 	GameEngine();
+public:
 	~GameEngine();
+	GameEngine(const GameEngine& obj) = delete;
+	void operator=(const GameEngine& obj) = delete;
 
 	void renderScene();
 	void update();
 	void handleEvents();
 
 	bool isGameRunning() const;
+
+	static GameEngine* getInstance();
+
+	SDL_Window* getWindow();
 };
 

@@ -1,16 +1,18 @@
 #pragma once
 #include "Scene.h"
+#include "../Objects/Platform/Platform.h"
+#include "../Objects/Ball/Ball.h"
 #include <iostream>
+#include <chrono>
 
 class GameScene : public Scene
 {
-	SDL_Rect m_platformOne;
-	SDL_Rect m_platformTwo;
+	Platform m_playerPlatform;
+	Platform m_botPlatform;
 
-	SDL_Rect m_ball;
+	Ball m_ball;
 
 	bool initialized;
-	int m_platformOneSpeed;
 
 	//SDL_Rect m_scoreOne;
 	//SDL_Rect m_scoreTwo;
@@ -22,10 +24,9 @@ public:
 	void setPlatforms(SDL_Window* window);
 	void playScene(SDL_Renderer* renderer, SDL_Window* window) override;
 
-	SDL_Rect getPlatformOne() const;
-	void setPlatformOne(const SDL_Rect &platform);
+	Platform& getPlayerPlatform();
+	Platform& getBotPlatform();
 
-	SDL_Rect& getBall();
+	Ball& getBall();
 	void setBall(const SDL_Rect& ball);
 };
-

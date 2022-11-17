@@ -133,6 +133,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Collidable.cpp" />
+    <ClCompile Include="Objects\Ball\Ball.cpp" />
     <ClCompile Include="Events\EventHandler.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="Events\GameSceneEvent.cpp" />
@@ -146,6 +148,8 @@
     <ClCompile Include="Scenes\Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Collidable.h" />
+    <ClInclude Include="Objects\Ball\Ball.h" />
     <ClInclude Include="Events\EventHandler.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="Events\MainMenuEvent.h" />

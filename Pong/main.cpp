@@ -2,6 +2,7 @@
 #undef main
 #include <iostream>
 #include <cassert>
+
 #include "GameEngine.h"
 
 /*
@@ -37,20 +38,22 @@ abstract Menu: clickable buttons,
 1. ResourceManager in order not to load constantly the same arial
 2. SDL_CreateTextureFromSurface do once (check)
 */
+
 int main() {
 	assert(!SDL_Init(SDL_INIT_EVERYTHING),"SDL hasn't initialized");
 	assert(!TTF_Init(), "TTF hasn't initialized");
 
-	GameEngine engine;
+	GameEngine* engine = GameEngine::getInstance();
 
-	while (engine.isGameRunning()) {
-		engine.renderScene();
-		engine.handleEvents();
-		engine.update();
+	while (engine->isGameRunning()) {
+		engine->renderScene();
+		engine->handleEvents();
+		engine->update();
 	}
 
 	SDL_Quit();
 	TTF_Quit();
+	delete engine;
 
 	/*
 	fullscreen = false;
