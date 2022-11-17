@@ -33,13 +33,13 @@
     <ClCompile Include="GameEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Scene\Scene.cpp">
+    <ClCompile Include="Scenes\Scene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Scene\MainMenu.cpp">
+    <ClCompile Include="Scenes\MainMenu.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Scene\GameScene.cpp">
+    <ClCompile Include="Scenes\GameScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="Objects\Button\Button.cpp">
@@ -48,18 +48,30 @@
     <ClCompile Include="Objects\Text\Text.cpp">
       <Filter>Objects\Text</Filter>
     </ClCompile>
+    <ClCompile Include="Events\EventHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Events\MainMenuEvent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Events\GameSceneEvent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\Platform\Platform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Scene\GameScene.h">
+    <ClInclude Include="Scenes\GameScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Scene\MainMenu.h">
+    <ClInclude Include="Scenes\MainMenu.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Scene\Scene.h">
+    <ClInclude Include="Scenes\Scene.h">
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="Objects\Button\Button.h">
@@ -67,6 +79,18 @@
     </ClInclude>
     <ClInclude Include="Objects\Text\Text.h">
       <Filter>Objects\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="Events\EventHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Events\MainMenuEvent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Events\GameSceneEvent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\Platform\Platform.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

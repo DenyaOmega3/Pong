@@ -1,6 +1,7 @@
 #pragma once
-#include "Scene/GameScene.h"
-#include "Scene/MainMenu.h"
+#include "Scenes/GameScene.h"
+#include "Scenes/MainMenu.h"
+#include "Events/GameSceneEvent.h"
 
 class GameEngine
 {
@@ -8,6 +9,7 @@ class GameEngine
 	SDL_Window* m_window;
 	SDL_Renderer* m_renderer;
 	bool m_isRunning;
+	EventHandler* m_eventHandler;
 
 public:
 	GameEngine();

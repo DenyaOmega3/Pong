@@ -133,21 +133,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Events\EventHandler.cpp" />
     <ClCompile Include="GameEngine.cpp" />
+    <ClCompile Include="Events\GameSceneEvent.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Events\MainMenuEvent.cpp" />
     <ClCompile Include="Objects\Button\Button.cpp" />
     <ClCompile Include="Objects\Text\Text.cpp" />
-    <ClCompile Include="Scene\GameScene.cpp" />
-    <ClCompile Include="Scene\MainMenu.cpp" />
-    <ClCompile Include="Scene\Scene.cpp" />
+    <ClCompile Include="Objects\Platform\Platform.cpp" />
+    <ClCompile Include="Scenes\GameScene.cpp" />
+    <ClCompile Include="Scenes\MainMenu.cpp" />
+    <ClCompile Include="Scenes\Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Events\EventHandler.h" />
     <ClInclude Include="GameEngine.h" />
+    <ClInclude Include="Events\MainMenuEvent.h" />
+    <ClInclude Include="Events\GameSceneEvent.h" />
     <ClInclude Include="Objects\Button\Button.h" />
     <ClInclude Include="Objects\Text\Text.h" />
-    <ClInclude Include="Scene\GameScene.h" />
-    <ClInclude Include="Scene\MainMenu.h" />
-    <ClInclude Include="Scene\Scene.h" />
+    <ClInclude Include="Objects\Platform\Platform.h" />
+    <ClInclude Include="Scenes\GameScene.h" />
+    <ClInclude Include="Scenes\MainMenu.h" />
+    <ClInclude Include="Scenes\Scene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

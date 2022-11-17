@@ -6,6 +6,8 @@
 GameEngine::GameEngine() : m_isRunning(true)
 {
 	m_currentScene = new GameScene();
+	m_eventHandler = new GameSceneEvent();
+
 	m_window = SDL_CreateWindow(
 		"Pong", 
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 
@@ -23,7 +25,10 @@ GameEngine::~GameEngine() {
 }
 
 void GameEngine::renderScene() {
+	SDL_SetRenderDrawColor(m_renderer, 0, 0, 0, 255);
+	SDL_RenderClear(m_renderer);
 	m_currentScene->playScene(m_renderer, m_window);
+	SDL_Delay(200);
 }
 
 void GameEngine::update()
@@ -32,17 +37,7 @@ void GameEngine::update()
 
 void GameEngine::handleEvents()
 {
-	SDL_Event events;
-	SDL_PollEvent(&events);
-
-
-	switch (events.type) {
-	case SDL_QUIT:
-		m_isRunning = false;
-		break;
-	default:
-		break;
-	}
+	m_eventHandler->handleEvents(m_currentScene);
 }
 
 bool GameEngine::isGameRunning() const
