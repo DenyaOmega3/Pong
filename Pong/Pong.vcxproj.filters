@@ -42,9 +42,6 @@
     <ClCompile Include="Scenes\GameScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Objects\Button\Button.cpp">
-      <Filter>Objects\Button</Filter>
-    </ClCompile>
     <ClCompile Include="Objects\Text\Text.cpp">
       <Filter>Objects\Text</Filter>
     </ClCompile>
@@ -63,7 +60,34 @@
     <ClCompile Include="Objects\Ball\Ball.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Collidable.cpp">
+    <ClCompile Include="Factory\EngineFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Factory\GameplayFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Factory\MainMenuFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\Text\Builders\TextBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\Text\Builders\PixelTextBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\Text\TextDirector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision\BoxCollider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\Text\Builders\PixelTextWithRectangleBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\Text\Builders\ArialTextWithRectangleBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Objects\Text\Builders\ArialTextBuilder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -79,9 +103,6 @@
     </ClInclude>
     <ClInclude Include="Scenes\Scene.h">
       <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Objects\Button\Button.h">
-      <Filter>Objects\Button</Filter>
     </ClInclude>
     <ClInclude Include="Objects\Text\Text.h">
       <Filter>Objects\Text</Filter>
@@ -101,7 +122,34 @@
     <ClInclude Include="Objects\Ball\Ball.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Collidable.h">
+    <ClInclude Include="Factory\EngineFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\GameplayFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory\MainMenuFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\Text\Builders\TextBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\Text\Builders\PixelTextBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\Text\TextDirector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision\BoxCollider.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\Text\Builders\PixelTextWithRectangleBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\Text\Builders\ArialTextWithRectangleBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Objects\Text\Builders\ArialTextBuilder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

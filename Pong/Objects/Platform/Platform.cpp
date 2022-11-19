@@ -2,7 +2,7 @@
 
 int Platform::m_platformSpeed = 20;
 
-Platform::Platform()
+Platform::Platform() : BoxCollider()
 {
 	int maxHeight = 524;
 

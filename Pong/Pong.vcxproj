@@ -133,33 +133,49 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Collidable.cpp" />
+    <ClCompile Include="Objects\Text\Builders\ArialTextBuilder.cpp" />
+    <ClCompile Include="Objects\Text\Builders\ArialTextWithRectangleBuilder.cpp" />
+    <ClCompile Include="Collision\BoxCollider.cpp" />
+    <ClCompile Include="Factory\EngineFactory.cpp" />
+    <ClCompile Include="Factory\GameplayFactory.cpp" />
+    <ClCompile Include="Factory\MainMenuFactory.cpp" />
     <ClCompile Include="Objects\Ball\Ball.cpp" />
     <ClCompile Include="Events\EventHandler.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="Events\GameSceneEvent.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Events\MainMenuEvent.cpp" />
-    <ClCompile Include="Objects\Button\Button.cpp" />
     <ClCompile Include="Objects\Text\Text.cpp" />
     <ClCompile Include="Objects\Platform\Platform.cpp" />
+    <ClCompile Include="Objects\Text\Builders\PixelTextBuilder.cpp" />
+    <ClCompile Include="Objects\Text\Builders\PixelTextWithRectangleBuilder.cpp" />
     <ClCompile Include="Scenes\GameScene.cpp" />
     <ClCompile Include="Scenes\MainMenu.cpp" />
     <ClCompile Include="Scenes\Scene.cpp" />
+    <ClCompile Include="Objects\Text\Builders\TextBuilder.cpp" />
+    <ClCompile Include="Objects\Text\TextDirector.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Collidable.h" />
+    <ClInclude Include="Objects\Text\Builders\ArialTextBuilder.h" />
+    <ClInclude Include="Objects\Text\Builders\ArialTextWithRectangleBuilder.h" />
+    <ClInclude Include="Collision\BoxCollider.h" />
+    <ClInclude Include="Factory\EngineFactory.h" />
+    <ClInclude Include="Factory\GameplayFactory.h" />
+    <ClInclude Include="Factory\MainMenuFactory.h" />
     <ClInclude Include="Objects\Ball\Ball.h" />
     <ClInclude Include="Events\EventHandler.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="Events\MainMenuEvent.h" />
     <ClInclude Include="Events\GameSceneEvent.h" />
-    <ClInclude Include="Objects\Button\Button.h" />
     <ClInclude Include="Objects\Text\Text.h" />
     <ClInclude Include="Objects\Platform\Platform.h" />
+    <ClInclude Include="Objects\Text\Builders\PixelTextBuilder.h" />
+    <ClInclude Include="Objects\Text\Builders\PixelTextWithRectangleBuilder.h" />
     <ClInclude Include="Scenes\GameScene.h" />
     <ClInclude Include="Scenes\MainMenu.h" />
     <ClInclude Include="Scenes\Scene.h" />
+    <ClInclude Include="Objects\Text\Builders\TextBuilder.h" />
+    <ClInclude Include="Objects\Text\TextDirector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

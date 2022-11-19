@@ -1,6 +1,10 @@
 #pragma once
 #include "SDL_ttf.h"
-#include "Events/GameSceneEvent.h"
+#include "Factory/GameplayFactory.h"
+#include "Factory/MainMenuFactory.h"
+
+#define WINDOW_WIDTH 859
+#define WINDOW_HEIGHT 524
 
 class GameEngine
 {

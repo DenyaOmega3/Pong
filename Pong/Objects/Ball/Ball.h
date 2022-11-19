@@ -1,12 +1,17 @@
 #pragma once
 #include "SDL.h"
 #include "../Platform/Platform.h"
+#include <iostream>
 
-class Ball
+enum xDirection {LEFT = -1, STOPH = 0, RIGHT = 1};
+enum yDirection { UP = -1, STOPV = 0, DOWN = 1 };
+
+class Ball : public BoxCollider
 {
-	SDL_Rect m_rectangle;
-	int xMove;
-	int yMove;
+	xDirection m_xDir;
+	yDirection m_yDir;
+
+	bool isCollidingWithPlatform;
 
 	float m_imaginaryX;
 	float m_imaginaryY;
@@ -19,8 +24,9 @@ public:
 
 	SDL_Rect& getRectangle();
 
-	void checkCollision(Platform& platform1, Platform& platform2);
+	void checkCollision(Platform& platform);
 
 	void checkPositionBot(Platform& botPlatform);
+	void changeDirection();
 };
 

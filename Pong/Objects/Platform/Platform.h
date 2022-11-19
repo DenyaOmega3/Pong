@@ -1,10 +1,10 @@
 #pragma once
 #include "SDL.h"
+#include "../../Collision/BoxCollider.h"
 //#include "../../GameEngine.h"
 
-class Platform
+class Platform : public BoxCollider
 {
-	SDL_Rect m_rectangle;
 	static int m_platformSpeed;
 
 public:

@@ -2,8 +2,11 @@
 #include "Scene.h"
 #include "../Objects/Platform/Platform.h"
 #include "../Objects/Ball/Ball.h"
+#include "../Objects/Text/Text.h"
 #include <iostream>
-#include <chrono>
+#include "../Objects/Text/TextDirector.h"
+#include "../Objects/Text/Builders/PixelTextBuilder.h"
+
 
 class GameScene : public Scene
 {
@@ -14,8 +17,8 @@ class GameScene : public Scene
 
 	bool initialized;
 
-	//SDL_Rect m_scoreOne;
-	//SDL_Rect m_scoreTwo;
+	Text *m_playerScore;
+	Text *m_botScore;
 
 public:
 	GameScene();
@@ -29,4 +32,7 @@ public:
 
 	Ball& getBall();
 	void setBall(const SDL_Rect& ball);
+
+	void initializePlayerScoreText();
+	void initializeBotScoreText();
 };

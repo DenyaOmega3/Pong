@@ -1,10 +1,12 @@
 #include "Ball.h"
 
-Ball::Ball()
+Ball::Ball() : BoxCollider()
 {
 	m_rectangle = SDL_Rect{ 859 / 2 - 5, 524 / 2 - 5, 2 * 5,2 * 5 };
-	xMove = 1;
-	yMove = 1;
+	m_xDir = RIGHT;
+	m_yDir = UP;
+
+	isCollidingWithPlatform = false;
 
 	m_imaginaryX = m_rectangle.x;
 	m_imaginaryY = m_rectangle.y;
@@ -17,24 +19,13 @@ Ball::Ball(const SDL_Rect& rectangle)
 
 void Ball::move()
 {
-	m_imaginaryX += m_rectangle.w * 1.0 / 120 *xMove;
-	m_imaginaryY += m_rectangle.h * 1.0 / 120 *yMove;
+	m_imaginaryX += m_rectangle.w * 1/15.0 * m_xDir;
+	m_imaginaryY += m_rectangle.h * 1/15.0 * m_yDir;
 
 	m_rectangle.x = m_imaginaryX;
 	m_rectangle.y = m_imaginaryY;
 
-	if (m_rectangle.y + m_rectangle.h >= 524) {
-		yMove = -1;
-	}
-	if (m_rectangle.x + m_rectangle.w >= 858) {
-		xMove = -1;
-	}
-	if (m_rectangle.y <= 0) {
-		yMove = 1;
-	}
-	if (m_rectangle.x <= 0) {
-		xMove = 1;
-	}
+	changeDirection();
 }
 
 SDL_Rect& Ball::getRectangle()
@@ -42,17 +33,19 @@ SDL_Rect& Ball::getRectangle()
 	return m_rectangle;
 }
 
-void Ball::checkCollision(Platform& platform1, Platform& platform2)
+void Ball::checkCollision(Platform& platform)
 {
-	if (m_rectangle.y + m_rectangle.h >= platform1.getRectangle().y &&
-		m_rectangle.y <= platform1.getRectangle().y + platform1.getRectangle().x)
+	/*if (m_rectangle.y + m_rectangle.h >= platform1.getRectangle().y &&
+		m_rectangle.y <= platform1.getRectangle().y + platform1.getRectangle().h)
 		if (m_rectangle.x <= platform1.getRectangle().x + platform1.getRectangle().w)
-			xMove = 1;
+			m_xDir = RIGHT;
 
 	if (m_rectangle.y + m_rectangle.h >= platform2.getRectangle().y &&
-		m_rectangle.y <= platform2.getRectangle().y + platform2.getRectangle().x)
+		m_rectangle.y <= platform2.getRectangle().y + platform2.getRectangle().h)
 		if (m_rectangle.x + m_rectangle.w >= platform2.getRectangle().x)
-			xMove = -1;
+			m_xDir = LEFT;*/
+
+	isCollidingWithPlatform += isColliding(platform.getRectangle());
 }
 
 void Ball::checkPositionBot(Platform& botPlatform)
@@ -63,5 +56,23 @@ void Ball::checkPositionBot(Platform& botPlatform)
 
 	if (m_rectangle.y + m_rectangle.h  <= botPlatform.getRectangle().y + 20) {
 		botPlatform.moveUp();
+	}
+}
+
+void Ball::changeDirection()
+{
+	if (m_rectangle.y + m_rectangle.h >= 524) {
+		m_yDir = UP;
+	}
+	if (m_rectangle.y <= 0) {
+		m_yDir = DOWN;
+	}
+	if (m_rectangle.x + m_rectangle.w >= 858 || m_rectangle.x <= 0) {
+		m_xDir = STOPH;
+		m_yDir = STOPV;
+	}
+	if (isCollidingWithPlatform) {
+		m_xDir = static_cast<xDirection>((-1)*m_xDir);
+		isCollidingWithPlatform = false;
 	}
 }

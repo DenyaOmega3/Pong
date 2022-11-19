@@ -1,14 +1,20 @@
 #pragma once
 #include "Scene.h"
-#include "../Objects/Button/Button.h"
+#include "../Objects/Text/Builders/PixelTextWithRectangleBuilder.h"
+#include "../Objects/Text/Builders/ArialTextWithRectangleBuilder.h"
+#include "../Objects/Text/TextDirector.h"
 
 class MainMenu : public Scene {
-	Text m_textStartGameButton;
-	Button m_startGameButton;
+	Text *m_title;
+	Text *m_textStartGame;
+	Text* m_textExitGame;
 
-	Text m_textExitButton;
-	Button m_exitButton;
 public:
 	MainMenu();
+	~MainMenu();
 	void playScene(SDL_Renderer* renderer, SDL_Window* window) override;
+
+	void initializeTitle();
+	void initializeStartGame();
+	void initializeExit();
 };

@@ -2,13 +2,8 @@
 
 void GameSceneEvent::handleEvents(Scene* currentScene)
 {
-	SDL_PollEvent(&m_event);
 	GameScene* obj = dynamic_cast<GameScene*>(currentScene);
-	obj->getBall().checkCollision(obj->getPlayerPlatform(), obj->getBotPlatform());
-	obj->getBall().checkPositionBot(obj->getBotPlatform());
-	obj->getBall().move();
-	
-
+	SDL_PollEvent(&m_event);
 	switch (m_event.type) {
 	case SDL_QUIT:
 		m_isRunning = false;
@@ -23,4 +18,19 @@ void GameSceneEvent::handleEvents(Scene* currentScene)
 	default:
 		break;
 	}
+	update(currentScene);
+}
+
+void GameSceneEvent::update(Scene* currentScene)
+{
+	GameScene* obj = dynamic_cast<GameScene*>(currentScene);
+	Ball& ball = obj->getBall();
+	Platform& playerPlatform = obj->getPlayerPlatform();
+	Platform& botPlatform = obj->getBotPlatform();
+
+	ball.checkCollision(playerPlatform);
+	ball.checkCollision(botPlatform);
+	ball.changeDirection();
+	ball.move();
+	ball.checkPositionBot(botPlatform);
 }

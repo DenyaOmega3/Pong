@@ -1,14 +1,15 @@
 #include "GameEngine.h"
 
-#define WINDOW_WIDTH 859
-#define WINDOW_HEIGHT 524
-
 GameEngine* GameEngine::m_uniqueEngine = nullptr;
 
 GameEngine::GameEngine() : m_isRunning(true)
 {
-	m_currentScene = new GameScene();
-	m_eventHandler = new GameSceneEvent();
+	assert(!SDL_Init(SDL_INIT_EVERYTHING), "SDL hasn't initialized");
+	assert(!TTF_Init(), "TTF hasn't initialized");
+
+	GameplayFactory* factory = new GameplayFactory();
+	m_currentScene = factory->createScene();
+	m_eventHandler = factory->createEventHandler();
 
 	m_window = SDL_CreateWindow(
 		"Pong", 
@@ -18,6 +19,8 @@ GameEngine::GameEngine() : m_isRunning(true)
 
 	m_renderer = SDL_CreateRenderer(m_window, -1, 0);
 	SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
+
+	delete factory;
 }
 
 GameEngine::~GameEngine() {
@@ -25,6 +28,9 @@ GameEngine::~GameEngine() {
 	delete m_eventHandler;
 	SDL_DestroyRenderer(m_renderer);
 	SDL_DestroyWindow(m_window);
+
+	SDL_Quit();
+	TTF_Quit();
 }
 
 void GameEngine::renderScene() {
