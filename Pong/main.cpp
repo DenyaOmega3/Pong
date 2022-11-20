@@ -2,7 +2,6 @@
 #undef main
 #include <time.h>
 #include "GameEngine.h"
-#include <chrono>
 
 int main() {
 	srand(time(nullptr));

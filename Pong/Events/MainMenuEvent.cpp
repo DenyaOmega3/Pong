@@ -13,7 +13,7 @@ void MainMenuEvent::handleEvents(float dt)
 		SDL_PumpEvents();
 		SDL_GetMouseState(&x, &y);
 		if (checkIfPressed(x, y, m_scene->getStartGameText()->getDstRectangle())) {
-			m_nextScene = GAME;
+			m_nextScene = MATCH;
 		}
 		if (checkIfPressed(x, y, m_scene->getExitGameText()->getDstRectangle()))
 			m_isRunning = false;

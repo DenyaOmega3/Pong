@@ -1,6 +1,6 @@
 #pragma once
 #include "SDL_ttf.h"
-#include "Factory/GameplayFactory.h"
+#include "Factory/MatchFactory.h"
 #include "Factory/MainMenuFactory.h"
 #include "preferences.h"
 

@@ -1,10 +1,10 @@
-#include "GameSceneEvent.h"
+#include "MatchEvent.h"
 
-GameSceneEvent::GameSceneEvent(): m_pressedFirstButton(false), m_isMatchFinished(false)
+MatchEvent::MatchEvent(): m_pressedFirstButton(false), m_isMatchFinished(false)
 {
 }
 
-void GameSceneEvent::handleEvents(float dt)
+void MatchEvent::handleEvents(float dt)
 {
 	SDL_PollEvent(&m_event);
 	switch (m_event.type) {
@@ -29,11 +29,11 @@ void GameSceneEvent::handleEvents(float dt)
 	update(dt);
 }
 
-void GameSceneEvent::startMovingBall(Ball &ball)
+void MatchEvent::startMovingBall(Ball &ball)
 {
 }
 
-void GameSceneEvent::update(float dt)
+void MatchEvent::update(float dt)
 {
 	Ball& ball = m_scene->getBall();
 	Platform& playerPlatform = m_scene->getPlayerPlatform();
@@ -61,12 +61,12 @@ void GameSceneEvent::update(float dt)
 	ball.checkPositionBot(botPlatform);
 }
 
-void GameSceneEvent::setScene(Scene* scene)
+void MatchEvent::setScene(Scene* scene)
 {
-	m_scene = dynamic_cast<GameScene*>(scene);
+	m_scene = dynamic_cast<MatchScene*>(scene);
 }
 
-void GameSceneEvent::increaseScoreTextByOne(Text* text)
+void MatchEvent::increaseScoreTextByOne(Text* text)
 {
 	int updateScore = std::stoi(text->getTextContent()) + 1;
 	text->changeText(std::to_string(updateScore));
@@ -77,7 +77,7 @@ void GameSceneEvent::increaseScoreTextByOne(Text* text)
 	}
 }
 
-void GameSceneEvent::resetMatch()
+void MatchEvent::resetMatch()
 {
 
 	m_scene->getPlayerPlatform().reset();

@@ -8,7 +8,7 @@
 #include "../Objects/Text/Builders/PixelTextBuilder.h"
 #include "../preferences.h"
 
-class GameScene : public Scene
+class MatchScene : public Scene
 {
 	Platform m_playerPlatform;
 	Platform m_botPlatform;
@@ -19,8 +19,8 @@ class GameScene : public Scene
 	Text *m_botScore;
 
 public:
-	GameScene();
-	~GameScene();
+	MatchScene();
+	~MatchScene();
 
 	void setPlatforms(SDL_Window* window);
 	void renderScene(SDL_Renderer* renderer) override;

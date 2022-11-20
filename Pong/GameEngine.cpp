@@ -87,8 +87,8 @@ void GameEngine::changeSceneIfNeeded()
 		changeSceneWithEvents(new MainMenuFactory());
 		break;
 	}
-	case GAME: {
-		changeSceneWithEvents(new GameplayFactory());
+	case MATCH: {
+		changeSceneWithEvents(new MatchFactory());
 		break;
 	}
 	default:

@@ -39,7 +39,7 @@
     <ClCompile Include="Scenes\MainMenu.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Scenes\GameScene.cpp">
+    <ClCompile Include="Scenes\MatchScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="Objects\Text\Text.cpp">
@@ -51,7 +51,7 @@
     <ClCompile Include="Events\MainMenuEvent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Events\GameSceneEvent.cpp">
+    <ClCompile Include="Events\MatchEvent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Objects\Platform\Platform.cpp">
@@ -63,7 +63,7 @@
     <ClCompile Include="Factory\EngineFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Factory\GameplayFactory.cpp">
+    <ClCompile Include="Factory\MatchFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Factory\MainMenuFactory.cpp">
@@ -95,7 +95,7 @@
     <ClInclude Include="GameEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Scenes\GameScene.h">
+    <ClInclude Include="Scenes\MatchScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="Scenes\MainMenu.h">
@@ -113,7 +113,7 @@
     <ClInclude Include="Events\MainMenuEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Events\GameSceneEvent.h">
+    <ClInclude Include="Events\MatchEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Objects\Platform\Platform.h">
@@ -125,7 +125,7 @@
     <ClInclude Include="Factory\EngineFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Factory\GameplayFactory.h">
+    <ClInclude Include="Factory\MatchFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Factory\MainMenuFactory.h">

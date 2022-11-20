@@ -1,15 +1,15 @@
 #pragma once
 #include "EventHandler.h"
 #include <iostream>
-#include "../Scenes/GameScene.h"
+#include "../Scenes/MatchScene.h"
 
-class GameSceneEvent : public EventHandler
+class MatchEvent : public EventHandler
 {
-	GameScene* m_scene;
+	MatchScene* m_scene;
 	bool m_pressedFirstButton;
 	bool m_isMatchFinished;
 public:
-	GameSceneEvent();
+	MatchEvent();
 
 	void handleEvents(float dt) override;
 	void startMovingBall(Ball& ball);

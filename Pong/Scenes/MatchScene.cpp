@@ -1,6 +1,6 @@
-#include "GameScene.h"
+#include "MatchScene.h"
 
-GameScene::GameScene() : m_playerPlatform(),
+MatchScene::MatchScene() : m_playerPlatform(),
 m_botPlatform(m_playerPlatform), m_ball()
 {
 	initializePlayerScoreText();
@@ -9,15 +9,15 @@ m_botPlatform(m_playerPlatform), m_ball()
 	m_botPlatform.getRectangle().x = windowWidth - m_botPlatform.getRectangle().x;
 }
 
-GameScene::~GameScene()
+MatchScene::~MatchScene()
 {
 }
 
-void GameScene::setPlatforms(SDL_Window* window)
+void MatchScene::setPlatforms(SDL_Window* window)
 {
 }
 
-void GameScene::renderScene(SDL_Renderer* renderer)
+void MatchScene::renderScene(SDL_Renderer* renderer)
 {
 	SDL_SetRenderDrawColor(renderer, 121, 121, 121, 255);
 	SDL_RenderFillRect(renderer, &m_playerPlatform.getRectangle());
@@ -35,37 +35,37 @@ void GameScene::renderScene(SDL_Renderer* renderer)
 	SDL_RenderPresent(renderer);
 }
 
-Platform& GameScene::getPlayerPlatform()
+Platform& MatchScene::getPlayerPlatform()
 {
 	return m_playerPlatform;
 }
 
-Platform& GameScene::getBotPlatform()
+Platform& MatchScene::getBotPlatform()
 {
 	return m_botPlatform;
 }
 
-Ball& GameScene::getBall()
+Ball& MatchScene::getBall()
 {
 	return m_ball;
 }
 
-Text* GameScene::getPlayerScoreText()
+Text* MatchScene::getPlayerScoreText()
 {
 	return m_playerScore;
 }
 
-Text* GameScene::getBotScoreText()
+Text* MatchScene::getBotScoreText()
 {
 	return m_botScore;
 }
 
-void GameScene::setBall(const SDL_Rect& ball)
+void MatchScene::setBall(const SDL_Rect& ball)
 {
 	m_ball = ball;
 }
 
-void GameScene::initializePlayerScoreText()
+void MatchScene::initializePlayerScoreText()
 {
 	TextDirector* director = new TextDirector();
 
@@ -84,7 +84,7 @@ void GameScene::initializePlayerScoreText()
 	delete director;
 }
 
-void GameScene::initializeBotScoreText()
+void MatchScene::initializeBotScoreText()
 {
 	TextDirector* director = new TextDirector();
 

@@ -2,7 +2,7 @@
 #include "SDL.h"
 #include "../Scenes/Scene.h"
 
-enum NextScene { NONE = 0, MAIN_MENU, GAME };
+enum NextScene { NONE = 0, MAIN_MENU, MATCH };
 
 class EventHandler
 {

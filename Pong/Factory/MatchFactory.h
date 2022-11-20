@@ -1,7 +1,7 @@
 #pragma once
 #include "EngineFactory.h"
 
-class GameplayFactory : public EngineFactory
+class MatchFactory : public EngineFactory
 {
 public:
 	Scene* createScene() override;
