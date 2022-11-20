@@ -4,9 +4,8 @@ GameSceneEvent::GameSceneEvent(): m_pressedFirstButton(false), m_isMatchFinished
 {
 }
 
-void GameSceneEvent::handleEvents(Scene* currentScene)
+void GameSceneEvent::handleEvents()
 {
-	GameScene* obj = dynamic_cast<GameScene*>(currentScene);
 	SDL_PollEvent(&m_event);
 	switch (m_event.type) {
 	case SDL_QUIT:
@@ -14,43 +13,42 @@ void GameSceneEvent::handleEvents(Scene* currentScene)
 		break;
 	case SDL_KEYDOWN: {
 		if (!m_pressedFirstButton) {
-			obj->getBall().startMoving();
+			m_scene->getBall().startMoving();
 			m_pressedFirstButton = true;
 		}
 
 		switch (m_event.key.keysym.sym) {
-		case SDLK_DOWN: obj->getPlayerPlatform().moveDown(); break;
-		case SDLK_UP: obj->getPlayerPlatform().moveUp(); break;
+		case SDLK_DOWN: m_scene->getPlayerPlatform().moveDown(); break;
+		case SDLK_UP: m_scene->getPlayerPlatform().moveUp(); break;
 		}
 		break;
 	}
 	default:
 		break;
 	}
-	update(currentScene);
+	update();
 }
 
 void GameSceneEvent::startMovingBall(Ball &ball)
 {
 }
 
-void GameSceneEvent::update(Scene* currentScene)
+void GameSceneEvent::update()
 {
-	GameScene* obj = dynamic_cast<GameScene*>(currentScene);
-	Ball& ball = obj->getBall();
-	Platform& playerPlatform = obj->getPlayerPlatform();
-	Platform& botPlatform = obj->getBotPlatform();
+	Ball& ball = m_scene->getBall();
+	Platform& playerPlatform = m_scene->getPlayerPlatform();
+	Platform& botPlatform = m_scene->getBotPlatform();
 	
 
 	switch (ball.isOutOfScreen()) {
 	case TRUE_LEFT: {
-		increaseScoreTextByOne(obj->getBotScoreText());
-		resetMatch(currentScene);
+		increaseScoreTextByOne(m_scene->getBotScoreText());
+		resetMatch();
 		break;
 	}
 	case TRUE_RIGHT: {
-		increaseScoreTextByOne(obj->getPlayerScoreText());
-		resetMatch(currentScene);
+		increaseScoreTextByOne(m_scene->getPlayerScoreText());
+		resetMatch();
 		break;
 	}
 	}
@@ -63,28 +61,31 @@ void GameSceneEvent::update(Scene* currentScene)
 	ball.checkPositionBot(botPlatform);
 }
 
+void GameSceneEvent::setScene(Scene* scene)
+{
+	m_scene = dynamic_cast<GameScene*>(scene);
+}
+
 void GameSceneEvent::increaseScoreTextByOne(Text* text)
 {
-	 int updateScore = std::stoi(text->getTextContent()) + 1;
+	int updateScore = std::stoi(text->getTextContent()) + 1;
 	text->changeText(std::to_string(updateScore));
 
 	if (updateScore == 5) {
 		m_isMatchFinished = true;
-		m_isRunning = false;
+		m_nextScene = MAIN_MENU;
 	}
 }
 
-void GameSceneEvent::resetMatch(Scene* currentScene)
+void GameSceneEvent::resetMatch()
 {
-	GameScene* obj = dynamic_cast<GameScene*>(currentScene);
-	SDL_Delay(2000);
 
-	obj->getPlayerPlatform().reset();
-	obj->getBotPlatform().reset();
+	m_scene->getPlayerPlatform().reset();
+	m_scene->getBotPlatform().reset();
 
-	obj->getBotPlatform().getRectangle().x = 859 - obj->getPlayerPlatform().getRectangle().x;
+	m_scene->getBotPlatform().getRectangle().x = 859 - m_scene->getPlayerPlatform().getRectangle().x;
 
-	obj->getBall().reset();
+	m_scene->getBall().reset();
 
 	m_pressedFirstButton = false;
 }

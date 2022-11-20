@@ -4,12 +4,8 @@ GameEngine* GameEngine::m_uniqueEngine = nullptr;
 
 GameEngine::GameEngine() : m_isRunning(true)
 {
-	assert(!SDL_Init(SDL_INIT_EVERYTHING), "SDL hasn't initialized");
-	assert(!TTF_Init(), "TTF hasn't initialized");
-
-	MainMenuFactory* factory = new MainMenuFactory();
-	m_currentScene = factory->createScene();
-	m_eventHandler = factory->createEventHandler();
+	initializeSDL();
+	loadSceneWithEvents(new MainMenuFactory());
 
 	m_window = SDL_CreateWindow(
 		"Pong", 
@@ -19,18 +15,46 @@ GameEngine::GameEngine() : m_isRunning(true)
 
 	m_renderer = SDL_CreateRenderer(m_window, -1, 0);
 	SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
-
-	delete factory;
 }
 
 GameEngine::~GameEngine() {
-	delete m_currentScene;
-	delete m_eventHandler;
+	removeSceneWithEvenets();
 	SDL_DestroyRenderer(m_renderer);
 	SDL_DestroyWindow(m_window);
 
+	closeSDL();
+}
+
+void GameEngine::initializeSDL()
+{
+	assert(!SDL_Init(SDL_INIT_EVERYTHING), "SDL hasn't initialized");
+	assert(!TTF_Init(), "TTF hasn't initialized");
+}
+
+void GameEngine::closeSDL()
+{
 	SDL_Quit();
 	TTF_Quit();
+}
+
+void GameEngine::loadSceneWithEvents(EngineFactory* factory)
+{
+	m_currentScene = factory->createScene();
+	m_eventHandler = factory->createEventHandler();
+	m_eventHandler->setScene(m_currentScene);
+	delete factory;
+}
+
+void GameEngine::removeSceneWithEvenets()
+{
+	delete m_currentScene;
+	delete m_eventHandler;
+}
+
+void GameEngine::changeSceneWithEvents(EngineFactory *factory)
+{
+	removeSceneWithEvenets();
+	loadSceneWithEvents(factory);
 }
 
 void GameEngine::renderScene() {
@@ -41,8 +65,28 @@ void GameEngine::renderScene() {
 
 void GameEngine::handleEvents()
 {
-	m_eventHandler->handleEvents(m_currentScene);
-	m_isRunning = m_eventHandler->isRunning(); 
+	m_eventHandler->handleEvents();
+	m_isRunning = m_eventHandler->isRunning();
+	changeSceneIfNeeded();
+}
+
+void GameEngine::changeSceneIfNeeded()
+{
+	NextScene changeScene = m_eventHandler->getNextScene();
+	
+	switch (changeScene)
+	{
+	case MAIN_MENU: {
+		changeSceneWithEvents(new MainMenuFactory());
+		break;
+	}
+	case GAME: {
+		changeSceneWithEvents(new GameplayFactory());
+		break;
+	}
+	default:
+		break;
+	}
 }
 
 bool GameEngine::isGameRunning() const

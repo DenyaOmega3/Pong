@@ -12,6 +12,7 @@ class MainMenu : public Scene {
 public:
 	MainMenu();
 	~MainMenu();
+
 	void playScene(SDL_Renderer* renderer, SDL_Window* window) override;
 
 	void initializeTitle();

@@ -152,5 +152,8 @@
     <ClInclude Include="Objects\Text\Builders\ArialTextBuilder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="preferences.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

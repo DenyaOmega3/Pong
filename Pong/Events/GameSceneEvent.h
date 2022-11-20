@@ -5,15 +5,19 @@
 
 class GameSceneEvent : public EventHandler
 {
+	GameScene* m_scene;
 	bool m_pressedFirstButton;
 	bool m_isMatchFinished;
 public:
 	GameSceneEvent();
-	void handleEvents(Scene* currentScene) override;
+
+	void handleEvents() override;
 	void startMovingBall(Ball& ball);
-	void update(Scene* currentScene);
+	void update();
+
+	void setScene(Scene* scene) override;
 
 	void increaseScoreTextByOne(Text* text);
-	void resetMatch(Scene* currentScene);
+	void resetMatch();
 };
 

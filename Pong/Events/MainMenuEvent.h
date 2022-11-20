@@ -4,8 +4,11 @@
 
 class MainMenuEvent : public EventHandler
 {
+	MainMenu* m_scene;
 public:
-	void handleEvents(Scene* currentScene) override;
+	void handleEvents() override;
+
+	void setScene(Scene* scene) override;
 
 	bool checkIfPressed(int xMouse, int yMouse, const SDL_Rect& rectangle);
 };

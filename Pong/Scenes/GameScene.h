@@ -7,8 +7,6 @@
 #include "../Objects/Text/TextDirector.h"
 #include "../Objects/Text/Builders/PixelTextBuilder.h"
 
-enum AvailableScenes {MAIN_MENU,GAME};
-
 class GameScene : public Scene
 {
 	Platform m_playerPlatform;

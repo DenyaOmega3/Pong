@@ -171,6 +171,7 @@
     <ClInclude Include="Objects\Platform\Platform.h" />
     <ClInclude Include="Objects\Text\Builders\PixelTextBuilder.h" />
     <ClInclude Include="Objects\Text\Builders\PixelTextWithRectangleBuilder.h" />
+    <ClInclude Include="preferences.h" />
     <ClInclude Include="Scenes\GameScene.h" />
     <ClInclude Include="Scenes\MainMenu.h" />
     <ClInclude Include="Scenes\Scene.h" />

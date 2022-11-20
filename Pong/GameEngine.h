@@ -2,9 +2,7 @@
 #include "SDL_ttf.h"
 #include "Factory/GameplayFactory.h"
 #include "Factory/MainMenuFactory.h"
-
-#define WINDOW_WIDTH 859
-#define WINDOW_HEIGHT 524
+#include "preferences.h"
 
 class GameEngine
 {
@@ -22,8 +20,15 @@ public:
 	GameEngine(const GameEngine& obj) = delete;
 	void operator=(const GameEngine& obj) = delete;
 
+	void initializeSDL();
+	void closeSDL();
+	void loadSceneWithEvents(EngineFactory* factory);
+	void removeSceneWithEvenets();
+	void changeSceneWithEvents(EngineFactory* factory);
+
 	void renderScene();
 	void handleEvents();
+	void changeSceneIfNeeded();
 
 	bool isGameRunning() const;
 

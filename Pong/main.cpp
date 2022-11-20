@@ -1,6 +1,5 @@
 #include "SDL.h"
 #undef main
-#include <iostream>
 #include <time.h>
 #include "GameEngine.h"
 
@@ -14,5 +13,6 @@ int main() {
 	}
 
 	delete engine;
+
 	return 0;
 }

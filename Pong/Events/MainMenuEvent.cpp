@@ -1,8 +1,8 @@
 #include "MainMenuEvent.h"
 
-void MainMenuEvent::handleEvents(Scene* currentScene)
+void MainMenuEvent::handleEvents()
 {
-	MainMenu* obj = dynamic_cast<MainMenu*>(currentScene);
+	m_nextScene = NONE;
 	SDL_PollEvent(&m_event);
 	switch (m_event.type) {
 	case SDL_QUIT:
@@ -12,10 +12,11 @@ void MainMenuEvent::handleEvents(Scene* currentScene)
 		int x, y;
 		SDL_PumpEvents();
 		SDL_GetMouseState(&x, &y);
-		if (checkIfPressed(x, y, obj->getStartGameText()->getDstRectangle())) {
+		if (checkIfPressed(x, y, m_scene->getStartGameText()->getDstRectangle())) {
 			std::cout << "start game" << std::endl;
+			m_nextScene = GAME;
 		}
-		if (checkIfPressed(x, y, obj->getExitGameText()->getDstRectangle()))
+		if (checkIfPressed(x, y, m_scene->getExitGameText()->getDstRectangle()))
 			m_isRunning = false;
 
 		break;
@@ -23,6 +24,11 @@ void MainMenuEvent::handleEvents(Scene* currentScene)
 	default:
 		break;
 	}
+}
+
+void MainMenuEvent::setScene(Scene* scene)
+{
+	m_scene = dynamic_cast<MainMenu*>(scene);
 }
 
 bool MainMenuEvent::checkIfPressed(int xMouse, int yMouse, const SDL_Rect& rectangle)
