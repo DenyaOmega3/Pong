@@ -1,4 +1,5 @@
 #include "MainMenu.h"
+
 MainMenu::MainMenu() {
 	initializeTitle();
 	initializeStartGame();
@@ -12,7 +13,7 @@ MainMenu::~MainMenu()
 	delete m_textExitGame;
 }
 
-void MainMenu::playScene(SDL_Renderer* renderer, SDL_Window* window)
+void MainMenu::renderScene(SDL_Renderer* renderer)
 {
 	m_title->loadTexture(renderer);
 	m_title->render(renderer);
@@ -22,6 +23,7 @@ void MainMenu::playScene(SDL_Renderer* renderer, SDL_Window* window)
 
 	m_textExitGame->loadTexture(renderer);
 	m_textExitGame->render(renderer);
+
 	SDL_RenderPresent(renderer);
 }
 
@@ -54,7 +56,7 @@ void MainMenu::initializeStartGame()
 		->buildColor({ 255,255,255 })
 		->buildTextContent("Start Game")
 		->buildDstRectangleColor()
-		->buildPosition(858 / 2, 200);
+		->buildPosition((windowWidth - 1) / 2, 200 * windowWidth/859.0);
 
 	director->setBuilder(arialTextWithRectangle);
 	director->buildText();

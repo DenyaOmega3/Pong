@@ -12,6 +12,10 @@ class GameEngine
 	bool m_isRunning;
 	EventHandler* m_eventHandler;
 
+	int m_prevTime = 0;
+	int m_currTime = 0;
+	float m_deltaTime;
+
 	static GameEngine* m_uniqueEngine;
 
 	GameEngine();
@@ -22,9 +26,13 @@ public:
 
 	void initializeSDL();
 	void closeSDL();
+
 	void loadSceneWithEvents(EngineFactory* factory);
 	void removeSceneWithEvenets();
 	void changeSceneWithEvents(EngineFactory* factory);
+
+	void initializeWindow();
+	void initializeRenderer();
 
 	void renderScene();
 	void handleEvents();
@@ -32,10 +40,9 @@ public:
 
 	bool isGameRunning() const;
 
-	void stopRunning();
+	void loadDeltaTime();
+	float getDeltaTime() const;
 
 	static GameEngine* getInstance();
-
-	SDL_Window* getWindow();
 };
 

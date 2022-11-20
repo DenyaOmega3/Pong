@@ -13,7 +13,7 @@ protected:
 
 public:
 	EventHandler();
-	virtual void handleEvents() = 0;
+	virtual void handleEvents(float dt) = 0;
 	bool isRunning();
 	NextScene getNextScene();
 	virtual void setScene(Scene* scene) = 0;

@@ -6,6 +6,7 @@
 #include <iostream>
 #include "../Objects/Text/TextDirector.h"
 #include "../Objects/Text/Builders/PixelTextBuilder.h"
+#include "../preferences.h"
 
 class GameScene : public Scene
 {
@@ -22,7 +23,7 @@ public:
 	~GameScene();
 
 	void setPlatforms(SDL_Window* window);
-	void playScene(SDL_Renderer* renderer, SDL_Window* window) override;
+	void renderScene(SDL_Renderer* renderer) override;
 
 	Platform& getPlayerPlatform();
 	Platform& getBotPlatform();

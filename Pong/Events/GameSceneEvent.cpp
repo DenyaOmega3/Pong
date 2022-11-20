@@ -4,7 +4,7 @@ GameSceneEvent::GameSceneEvent(): m_pressedFirstButton(false), m_isMatchFinished
 {
 }
 
-void GameSceneEvent::handleEvents()
+void GameSceneEvent::handleEvents(float dt)
 {
 	SDL_PollEvent(&m_event);
 	switch (m_event.type) {
@@ -26,14 +26,14 @@ void GameSceneEvent::handleEvents()
 	default:
 		break;
 	}
-	update();
+	update(dt);
 }
 
 void GameSceneEvent::startMovingBall(Ball &ball)
 {
 }
 
-void GameSceneEvent::update()
+void GameSceneEvent::update(float dt)
 {
 	Ball& ball = m_scene->getBall();
 	Platform& playerPlatform = m_scene->getPlayerPlatform();
@@ -57,7 +57,7 @@ void GameSceneEvent::update()
 	ball.checkCollision(botPlatform);
 
 	ball.changeDirection();
-	ball.move();
+	ball.move(dt);
 	ball.checkPositionBot(botPlatform);
 }
 

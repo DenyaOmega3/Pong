@@ -2,6 +2,7 @@
 #include "SDL.h"
 #include "../Platform/Platform.h"
 #include <iostream>
+#include "../../preferences.h"
 
 enum xDirection {LEFT = -1, STOPH = 0, RIGHT = 1};
 enum yDirection { UP = -1, STOPV = 0, DOWN = 1 };
@@ -18,11 +19,13 @@ class Ball : public BoxCollider
 	float m_imaginaryY;
 	OutOfScreen m_isOutOfScreen;
 
+	static int m_ballSpeed;
+
 public:	
 	Ball();
 	Ball(const SDL_Rect& rectangle);
 
-	void move();
+	void move(float dt);
 	void stopMoving();
 	void startMoving();
 

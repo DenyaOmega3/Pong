@@ -11,9 +11,9 @@ class GameSceneEvent : public EventHandler
 public:
 	GameSceneEvent();
 
-	void handleEvents() override;
+	void handleEvents(float dt) override;
 	void startMovingBall(Ball& ball);
-	void update();
+	void update(float dt);
 
 	void setScene(Scene* scene) override;
 

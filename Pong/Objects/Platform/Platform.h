@@ -1,11 +1,14 @@
 #pragma once
 #include "SDL.h"
 #include "../../Collision/BoxCollider.h"
-//#include "../../GameEngine.h"
+#include "../../preferences.h"
 
 class Platform : public BoxCollider
 {
 	static int m_platformSpeed;
+	static int platformWidth;
+	static int platformHeight;
+	static int horizontalMargin;
 
 public:
 	Platform();

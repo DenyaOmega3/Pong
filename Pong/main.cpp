@@ -2,12 +2,14 @@
 #undef main
 #include <time.h>
 #include "GameEngine.h"
+#include <chrono>
 
 int main() {
 	srand(time(nullptr));
 	GameEngine* engine = GameEngine::getInstance();
 
 	while (engine->isGameRunning()) {
+		engine->loadDeltaTime();
 		engine->renderScene();
 		engine->handleEvents();
 	}

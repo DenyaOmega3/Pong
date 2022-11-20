@@ -6,7 +6,7 @@ m_botPlatform(m_playerPlatform), m_ball()
 	initializePlayerScoreText();
 	initializeBotScoreText();
 
-	m_botPlatform.getRectangle().x = 859 - m_botPlatform.getRectangle().x;
+	m_botPlatform.getRectangle().x = windowWidth - m_botPlatform.getRectangle().x;
 }
 
 GameScene::~GameScene()
@@ -17,17 +17,14 @@ void GameScene::setPlatforms(SDL_Window* window)
 {
 }
 
-void GameScene::playScene(SDL_Renderer* renderer, SDL_Window* window)
+void GameScene::renderScene(SDL_Renderer* renderer)
 {
-	int width, height;
-	SDL_GetWindowSize(window, &width, &height);
-
 	SDL_SetRenderDrawColor(renderer, 121, 121, 121, 255);
 	SDL_RenderFillRect(renderer, &m_playerPlatform.getRectangle());
 	SDL_RenderFillRect(renderer, &m_botPlatform.getRectangle());
 	SDL_RenderFillRect(renderer, &m_ball.getRectangle());
 
-	SDL_RenderDrawLine(renderer, (width - 1) / 2, 0, (width - 1) / 2, height);
+	SDL_RenderDrawLine(renderer, (windowWidth - 1) / 2, 0, (windowWidth - 1) / 2, windowHeight);
 
 	m_playerScore->loadTexture(renderer);
 	m_botScore->loadTexture(renderer);
@@ -77,7 +74,7 @@ void GameScene::initializePlayerScoreText()
 		->buildSize(24)
 		->buildColor({ 255,255,255 })
 		->buildTextContent("0")
-		->buildPosition(858 / 4.0, 50);
+		->buildPosition((windowWidth-1) / 4.0, 50);
 
 	director->setBuilder(pixelTextBuilderWithRectangle);
 	director->buildText();
@@ -96,7 +93,7 @@ void GameScene::initializeBotScoreText()
 		->buildSize(24)
 		->buildColor({ 255,255,255 })
 		->buildTextContent("0")
-		->buildPosition(858 * 3/ 4.0, 50);
+		->buildPosition((windowWidth-1) * 3/ 4.0, 50);
 
 	director->setBuilder(pixelTextBuilderWithRectangle);
 	director->buildText();

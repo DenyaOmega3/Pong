@@ -3,6 +3,7 @@
 #include "../Objects/Text/Builders/PixelTextWithRectangleBuilder.h"
 #include "../Objects/Text/Builders/ArialTextWithRectangleBuilder.h"
 #include "../Objects/Text/TextDirector.h"
+#include "../preferences.h"
 
 class MainMenu : public Scene {
 	Text *m_title;
@@ -13,7 +14,7 @@ public:
 	MainMenu();
 	~MainMenu();
 
-	void playScene(SDL_Renderer* renderer, SDL_Window* window) override;
+	void renderScene(SDL_Renderer* renderer) override;
 
 	void initializeTitle();
 	void initializeStartGame();

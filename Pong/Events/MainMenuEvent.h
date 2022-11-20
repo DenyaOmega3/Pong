@@ -6,7 +6,7 @@ class MainMenuEvent : public EventHandler
 {
 	MainMenu* m_scene;
 public:
-	void handleEvents() override;
+	void handleEvents(float dt) override;
 
 	void setScene(Scene* scene) override;
 

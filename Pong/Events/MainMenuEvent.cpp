@@ -1,6 +1,6 @@
 #include "MainMenuEvent.h"
 
-void MainMenuEvent::handleEvents()
+void MainMenuEvent::handleEvents(float dt)
 {
 	m_nextScene = NONE;
 	SDL_PollEvent(&m_event);
@@ -13,7 +13,6 @@ void MainMenuEvent::handleEvents()
 		SDL_PumpEvents();
 		SDL_GetMouseState(&x, &y);
 		if (checkIfPressed(x, y, m_scene->getStartGameText()->getDstRectangle())) {
-			std::cout << "start game" << std::endl;
 			m_nextScene = GAME;
 		}
 		if (checkIfPressed(x, y, m_scene->getExitGameText()->getDstRectangle()))

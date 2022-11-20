@@ -2,6 +2,12 @@
 
 BoxCollider::BoxCollider()
 {
+
+}
+
+BoxCollider::BoxCollider(const SDL_Rect& rectangle)
+{
+	m_rectangle = rectangle;
 }
 
 bool BoxCollider::isColliding(SDL_Rect& anotherCollider)
@@ -15,4 +21,9 @@ bool BoxCollider::isColliding(SDL_Rect& anotherCollider)
 SDL_Rect& BoxCollider::getRectangle()
 {
 	return m_rectangle;
+}
+
+void BoxCollider::setRectangle(SDL_Rect& rectnangle)
+{
+	m_rectangle = rectnangle;
 }

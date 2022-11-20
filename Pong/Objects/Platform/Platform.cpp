@@ -1,19 +1,17 @@
 #include "Platform.h"
-
+int Platform::platformWidth = 10;
+int Platform::platformHeight = 40;
 int Platform::m_platformSpeed = 20;
+int Platform::horizontalMargin = 60;
+
 
 Platform::Platform() : BoxCollider()
 {
-	int maxHeight = 524;
-
-	int marginX = 60;
-	int rectWidth = 10, rectHeight = 40;
-	m_rectangle = SDL_Rect{ marginX, maxHeight / 2 - rectHeight / 2, rectWidth, rectHeight };
+	m_rectangle = SDL_Rect{ horizontalMargin, windowHeight / 2 - platformHeight / 2, platformWidth, platformHeight };
 }
 
-Platform::Platform(const SDL_Rect& rectangle)
+Platform::Platform(const SDL_Rect& rectangle) : BoxCollider(rectangle)
 {
-	m_rectangle = rectangle;
 }
 
 void Platform::moveUp()
@@ -25,11 +23,9 @@ void Platform::moveUp()
 
 void Platform::moveDown()
 {
-	int maxHeight = 524;
-	
 	m_rectangle.y += m_platformSpeed;
-	if (m_rectangle.y+m_rectangle.h > maxHeight)
-		m_rectangle.y = maxHeight - m_rectangle.h;
+	if (m_rectangle.y+m_rectangle.h > windowHeight)
+		m_rectangle.y = windowHeight - m_rectangle.h;
 }
 
 SDL_Rect& Platform::getRectangle()
@@ -39,9 +35,6 @@ SDL_Rect& Platform::getRectangle()
 
 void Platform::reset()
 {
-	int maxHeight = 524;
-
 	int marginX = 60;
-	int rectWidth = 10, rectHeight = 40;
-	m_rectangle = SDL_Rect{ marginX, maxHeight / 2 - rectHeight / 2, rectWidth, rectHeight };
+	m_rectangle = SDL_Rect{ horizontalMargin, windowHeight / 2 - platformWidth / 2, platformWidth, platformHeight };
 }

@@ -6,22 +6,14 @@ GameEngine::GameEngine() : m_isRunning(true)
 {
 	initializeSDL();
 	loadSceneWithEvents(new MainMenuFactory());
-
-	m_window = SDL_CreateWindow(
-		"Pong", 
-		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 
-		WINDOW_WIDTH, WINDOW_HEIGHT,
-		SDL_WINDOW_SHOWN);
-
-	m_renderer = SDL_CreateRenderer(m_window, -1, 0);
-	SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
+	initializeWindow();
+	initializeRenderer();
 }
 
 GameEngine::~GameEngine() {
-	removeSceneWithEvenets();
 	SDL_DestroyRenderer(m_renderer);
 	SDL_DestroyWindow(m_window);
-
+	removeSceneWithEvenets();
 	closeSDL();
 }
 
@@ -57,15 +49,30 @@ void GameEngine::changeSceneWithEvents(EngineFactory *factory)
 	loadSceneWithEvents(factory);
 }
 
+void GameEngine::initializeWindow()
+{
+	m_window = SDL_CreateWindow(
+		windowName.c_str(),
+		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+		windowWidth, windowHeight,
+		SDL_WINDOW_SHOWN);
+}
+
+void GameEngine::initializeRenderer()
+{
+	m_renderer = SDL_CreateRenderer(m_window, -1, 0);
+	SDL_SetRenderDrawBlendMode(m_renderer, SDL_BLENDMODE_BLEND);
+}
+
 void GameEngine::renderScene() {
 	SDL_SetRenderDrawColor(m_renderer, 0, 0, 0, 255);
 	SDL_RenderClear(m_renderer);
-	m_currentScene->playScene(m_renderer, m_window);
+	m_currentScene->renderScene(m_renderer);
 }
 
 void GameEngine::handleEvents()
 {
-	m_eventHandler->handleEvents();
+	m_eventHandler->handleEvents(m_deltaTime);
 	m_isRunning = m_eventHandler->isRunning();
 	changeSceneIfNeeded();
 }
@@ -94,8 +101,16 @@ bool GameEngine::isGameRunning() const
 	return m_isRunning;
 }
 
-void GameEngine::stopRunning()
+void GameEngine::loadDeltaTime()
 {
+	m_prevTime = m_currTime;
+	m_currTime = SDL_GetTicks();
+	m_deltaTime = (m_currTime - m_prevTime) / 1000.0f;
+}
+
+float GameEngine::getDeltaTime() const
+{
+	return m_deltaTime;
 }
 
 GameEngine* GameEngine::getInstance()
@@ -103,9 +118,4 @@ GameEngine* GameEngine::getInstance()
 	if (!m_uniqueEngine)
 		m_uniqueEngine = new GameEngine();
 	return m_uniqueEngine;
-}
-
-SDL_Window* GameEngine::getWindow()
-{
-	return m_window;
 }
