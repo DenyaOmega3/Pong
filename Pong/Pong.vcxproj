@@ -76,13 +76,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Denya_Alpha\Desktop\Library\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\include;C:\Users\Denya_Alpha\Desktop\Library\SDL2-devel-2.24.2-VC\SDL2-2.24.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Library\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\include;$(SolutionDir)Library\SDL2-devel-2.24.2-VC\SDL2-2.24.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\Denya_Alpha\Desktop\Library\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\lib\x86;C:\Users\Denya_Alpha\Desktop\Library\SDL2-devel-2.24.2-VC\SDL2-2.24.2\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)Library\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\lib\x86;$(SolutionDir)Library\SDL2-devel-2.24.2-VC\SDL2-2.24.2\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -93,7 +93,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Denya_Alpha\Desktop\Library\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\include;C:\Users\Denya_Alpha\Desktop\Library\SDL2-devel-2.24.2-VC\SDL2-2.24.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Library\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\include;$(SolutionDir)Library\SDL2-devel-2.24.2-VC\SDL2-2.24.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -101,7 +101,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\Denya_Alpha\Desktop\Library\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\lib\x86;C:\Users\Denya_Alpha\Desktop\Library\SDL2-devel-2.24.2-VC\SDL2-2.24.2\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)Library\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\lib\x86;$(SolutionDir)Library\SDL2-devel-2.24.2-VC\SDL2-2.24.2\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
