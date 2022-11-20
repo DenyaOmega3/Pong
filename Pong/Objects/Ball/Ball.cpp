@@ -2,14 +2,7 @@
 
 Ball::Ball() : BoxCollider()
 {
-	m_rectangle = SDL_Rect{ 859 / 2 - 5, 524 / 2 - 5, 2 * 5,2 * 5 };
-	m_xDir = RIGHT;
-	m_yDir = UP;
-
-	isCollidingWithPlatform = false;
-
-	m_imaginaryX = m_rectangle.x;
-	m_imaginaryY = m_rectangle.y;
+	reset();
 }
 
 Ball::Ball(const SDL_Rect& rectangle)
@@ -26,6 +19,18 @@ void Ball::move()
 	m_rectangle.y = m_imaginaryY;
 
 	changeDirection();
+}
+
+void Ball::stopMoving()
+{
+	m_xDir = STOPH;
+	m_yDir = STOPV;
+}
+
+void Ball::startMoving()
+{
+	m_xDir = RIGHT;
+	m_yDir = UP;
 }
 
 SDL_Rect& Ball::getRectangle()
@@ -45,17 +50,21 @@ void Ball::checkCollision(Platform& platform)
 		if (m_rectangle.x + m_rectangle.w >= platform2.getRectangle().x)
 			m_xDir = LEFT;*/
 
-	isCollidingWithPlatform += isColliding(platform.getRectangle());
+	m_isCollidingWithPlatform += isColliding(platform.getRectangle());
 }
 
 void Ball::checkPositionBot(Platform& botPlatform)
 {
-	if (m_rectangle.y >= botPlatform.getRectangle().y + botPlatform.getRectangle().h - 30) {
-		botPlatform.moveDown();
-	}
+	int random = rand()%100; //probability not to move
 
-	if (m_rectangle.y + m_rectangle.h  <= botPlatform.getRectangle().y + 20) {
-		botPlatform.moveUp();
+	if (random >= 80) {
+		if (m_rectangle.y >= botPlatform.getRectangle().y + botPlatform.getRectangle().h - 30) {
+			botPlatform.moveDown();
+		}
+
+		if (m_rectangle.y + m_rectangle.h  <= botPlatform.getRectangle().y + 20) {
+			botPlatform.moveUp();
+		}
 	}
 }
 
@@ -67,12 +76,34 @@ void Ball::changeDirection()
 	if (m_rectangle.y <= 0) {
 		m_yDir = DOWN;
 	}
-	if (m_rectangle.x + m_rectangle.w >= 858 || m_rectangle.x <= 0) {
-		m_xDir = STOPH;
-		m_yDir = STOPV;
+	if (m_rectangle.x + m_rectangle.w >= 858) {
+		m_isOutOfScreen = TRUE_RIGHT;
+		stopMoving();
 	}
-	if (isCollidingWithPlatform) {
+	if (m_rectangle.x <= 0) {
+		m_isOutOfScreen = TRUE_LEFT;
+		stopMoving();
+	}
+	if (m_isCollidingWithPlatform) {
 		m_xDir = static_cast<xDirection>((-1)*m_xDir);
-		isCollidingWithPlatform = false;
+		m_isCollidingWithPlatform = false;
 	}
+}
+
+OutOfScreen Ball::isOutOfScreen()
+{
+	return m_isOutOfScreen;
+}
+
+void Ball::reset()
+{
+	m_rectangle = SDL_Rect{ 859 / 2 - 5, 524 / 2 - 5, 2 * 5,2 * 5 };
+	m_xDir = STOPH;
+	m_yDir = STOPV;
+
+	m_isCollidingWithPlatform = false;
+	m_isOutOfScreen = FALSE;
+
+	m_imaginaryX = m_rectangle.x;
+	m_imaginaryY = m_rectangle.y;
 }

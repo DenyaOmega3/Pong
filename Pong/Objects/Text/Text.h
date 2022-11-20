@@ -50,5 +50,8 @@ public:
 
 	void render(SDL_Renderer* renderer);
 	SDL_Rect& getDstRectangle();
+
+
+	void changeText(const std::string& text);
 };
 

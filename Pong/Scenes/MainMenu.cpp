@@ -83,3 +83,18 @@ void MainMenu::initializeExit()
 	delete arialTextWithRectangle;
 	delete director;
 }
+
+Text* MainMenu::getTitle()
+{
+	return m_title;
+}
+
+Text* MainMenu::getStartGameText()
+{
+	return m_textStartGame;
+}
+
+Text* MainMenu::getExitGameText()
+{
+	return m_textExitGame;
+}

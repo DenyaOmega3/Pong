@@ -99,6 +99,15 @@ const std::string& Text::getTextContent() {
 	return m_text;
 }
 
+void Text::changeText(const std::string& text)
+{
+	SDL_DestroyTexture(m_texture);
+	SDL_FreeSurface(m_surface);
+	setTextContent(text);
+	loadSurface();
+	m_texture = nullptr;
+}
+
 SDL_Rect& Text::getDstRectangle()
 {
 	return m_dstRectangle;

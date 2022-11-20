@@ -15,5 +15,7 @@ public:
 	void moveDown();
 
 	SDL_Rect& getRectangle();
+
+	void reset();
 };
 

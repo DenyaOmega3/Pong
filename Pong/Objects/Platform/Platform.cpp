@@ -36,3 +36,12 @@ SDL_Rect& Platform::getRectangle()
 {
 	return m_rectangle;
 }
+
+void Platform::reset()
+{
+	int maxHeight = 524;
+
+	int marginX = 60;
+	int rectWidth = 10, rectHeight = 40;
+	m_rectangle = SDL_Rect{ marginX, maxHeight / 2 - rectHeight / 2, rectWidth, rectHeight };
+}

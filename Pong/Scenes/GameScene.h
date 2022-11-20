@@ -7,6 +7,7 @@
 #include "../Objects/Text/TextDirector.h"
 #include "../Objects/Text/Builders/PixelTextBuilder.h"
 
+enum AvailableScenes {MAIN_MENU,GAME};
 
 class GameScene : public Scene
 {
@@ -14,8 +15,6 @@ class GameScene : public Scene
 	Platform m_botPlatform;
 
 	Ball m_ball;
-
-	bool initialized;
 
 	Text *m_playerScore;
 	Text *m_botScore;
@@ -31,6 +30,10 @@ public:
 	Platform& getBotPlatform();
 
 	Ball& getBall();
+
+	Text* getPlayerScoreText();
+	Text* getBotScoreText();
+
 	void setBall(const SDL_Rect& ball);
 
 	void initializePlayerScoreText();

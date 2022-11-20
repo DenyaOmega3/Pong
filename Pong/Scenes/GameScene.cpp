@@ -1,9 +1,8 @@
 #include "GameScene.h"
 
-GameScene::GameScene() : m_playerPlatform(), initialized(false),
+GameScene::GameScene() : m_playerPlatform(),
 m_botPlatform(m_playerPlatform), m_ball()
 {
-
 	initializePlayerScoreText();
 	initializeBotScoreText();
 
@@ -52,6 +51,16 @@ Platform& GameScene::getBotPlatform()
 Ball& GameScene::getBall()
 {
 	return m_ball;
+}
+
+Text* GameScene::getPlayerScoreText()
+{
+	return m_playerScore;
+}
+
+Text* GameScene::getBotScoreText()
+{
+	return m_botScore;
 }
 
 void GameScene::setBall(const SDL_Rect& ball)

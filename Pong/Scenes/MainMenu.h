@@ -17,4 +17,8 @@ public:
 	void initializeTitle();
 	void initializeStartGame();
 	void initializeExit();
+
+	Text* getTitle();
+	Text* getStartGameText();
+	Text* getExitGameText();
 };

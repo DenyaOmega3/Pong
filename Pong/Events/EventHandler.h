@@ -10,5 +10,6 @@ protected:
 
 public:
 	virtual void handleEvents(Scene *currentScene) = 0;
+	bool isRunning();
 };
 

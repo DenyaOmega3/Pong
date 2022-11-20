@@ -23,10 +23,11 @@ public:
 	void operator=(const GameEngine& obj) = delete;
 
 	void renderScene();
-	void update();
 	void handleEvents();
 
 	bool isGameRunning() const;
+
+	void stopRunning();
 
 	static GameEngine* getInstance();
 
